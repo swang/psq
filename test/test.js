@@ -1,6 +1,8 @@
+/* global describe, it */
+'use strict';
+
 var ParseSearchQuery = require('../index.js')
     , chai = require('chai')
-    , should = chai.should
     , expect = chai.expect
 
 describe('ParseSearchQuery', function() {

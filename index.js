@@ -1,3 +1,5 @@
+'use strict';
+
 var ParseSearchQuery = function(query) {
   var results = query.match(/([\+\-]?[a-z]+\:[^ ]+|[\+\-]?"[^"]+"|[\+\-]?[\w\+]+)/ig)
     , json
@@ -11,10 +13,10 @@ var ParseSearchQuery = function(query) {
     var regExpLabelMatch = result.match(/([\+\-]?)(.*):(.*)/)
     var reWord = result.match(/([\+|\-]?)("[^"]+"|\w+)/)
     if (regExpLabelMatch) {
-      json[(regExpLabelMatch[1] !== '-' ? 'include' : 'exclude')]['labels'][regExpLabelMatch[2]] = regExpLabelMatch[3]
+      json[(regExpLabelMatch[1] !== '-' ? 'include' : 'exclude')].labels[regExpLabelMatch[2]] = regExpLabelMatch[3]
     }
     else if (reWord) {
-      json[(reWord[1] !== '-' ? 'include' : 'exclude')]['words'].push(reWord[2])
+      json[(reWord[1] !== '-' ? 'include' : 'exclude')].words.push(reWord[2])
     }
   })
   return json
