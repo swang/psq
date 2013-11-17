@@ -1,0 +1,31 @@
+{
+  "name": "psq",
+  "version": "0.0.1",
+  "description": "parses search query string into json",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swang/psq"
+  },
+  "keywords": [
+    "search query",
+    "search",
+    "query",
+    "parse"
+  ],
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.14.0"
+  },
+  "author": "Shuan Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swang/psq/issues"
+  }
+}
