@@ -6,7 +6,7 @@ psq (parse search query) converts a search query into JSON
 
 ## Requirements
 
-- [node v0.8+](http://nodejs.org/) (may work with v0.6 but no guarantees)
+- [node v0.6+](http://nodejs.org/)
 
 ## Install
 
@@ -43,8 +43,13 @@ console.log(psq('"hello world" -python +example'))
 ## TODO
 
 - Documentation
+- Add flags for HTML escaping/stripping and URL encoding/decoding
 
 ## CHANGELOG
+
+0.0.2
+- Fixed return object (now returns JSON)
+- Added example
 
 0.0.1
 - Initial Release
