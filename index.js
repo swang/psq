@@ -22,3 +22,5 @@ var ParseSearchQuery = function(query) {
   return JSON.stringify(json)
 }
 module.exports = ParseSearchQuery
+
+module.exports.VERSION = require('./package').version
