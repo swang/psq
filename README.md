@@ -12,6 +12,30 @@ psq (parse search query) converts a search query into JSON
 
 - npm install psq
 
+## Example
+```javascript
+var psq = require('psq')
+
+console.log(psq('"hello world" -python +example'))
+```
+
+```json
+{
+    "exclude": {
+        "labels": {},
+        "words": [
+            "python"
+        ]
+    },
+    "include": {
+        "labels": {},
+        "words": [
+            "\"hello world\"",
+            "example"
+        ]
+    }
+}
+````
 ## Author
 
 - [Shuan Wang](https://github.com/swang) [(twitter)](https://twitter.com/swang) (author)
