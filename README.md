@@ -1,6 +1,6 @@
 psq
 =========================================
-psq (parse search query) converts a search query into a JSON objectfiles
+psq (parse search query) converts a search query into JSON
 
 [![build status](https://secure.travis-ci.org/swang/psq.png)](http://travis-ci.org/swang/psq)
 

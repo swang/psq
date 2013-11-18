@@ -1,20 +1,20 @@
 /* global describe, it */
 'use strict';
 
-var ParseSearchQuery = require('../index.js')
+var psq = require('../index.js')
     , chai = require('chai')
     , expect = chai.expect
 
-describe('ParseSearchQuery', function() {
+describe('psq', function() {
 
   describe('basic queries', function() {
     it('should return array of results', function(done) {
 
-      expect(ParseSearchQuery("alpha"))
+      expect(JSON.parse(psq("alpha")))
         .to.have.deep.property('include.words')
         .that.deep.equals(['alpha'])
 
-      var parse = ParseSearchQuery('"alpha quadrant"')
+      var parse = JSON.parse(psq('"alpha quadrant"'))
 
       expect(parse)
         .to.have.deep.property('include.words')
@@ -24,7 +24,7 @@ describe('ParseSearchQuery', function() {
         .to.have.deep.property('exclude.words')
         .that.deep.equals([])
 
-      var parse2 = ParseSearchQuery('+"alpha quadrant" beta gamma info')
+      var parse2 = JSON.parse(psq('+"alpha quadrant" beta gamma info'))
 
       expect(parse2)
         .to.have.deep.property('include.words')
@@ -34,7 +34,7 @@ describe('ParseSearchQuery', function() {
         .to.have.deep.property('exclude.words')
         .that.deep.equals([])
 
-      var parse3 = ParseSearchQuery('-"alpha quadrant" beta gamma info')
+      var parse3 = JSON.parse(psq('-"alpha quadrant" beta gamma info'))
 
       expect(parse3)
         .to.have.deep.property('include.words')
@@ -49,14 +49,14 @@ describe('ParseSearchQuery', function() {
   })
   describe('basic labeled keywords', function() {
     it('handles labeling' , function(done) {
-      var parse = ParseSearchQuery('site:test.website.org')
+      var parse = JSON.parse(psq('site:test.website.org'))
       expect(parse)
         .to.have.deep.property('include.labels.site')
         .that.deep.equals("test.website.org")
       done()
     })
     it('handles exclusion labeling' , function(done) {
-      var parse2 = ParseSearchQuery('-site:test.website.org')
+      var parse2 = JSON.parse(psq('-site:test.website.org'))
       expect(parse2)
         .to.have.deep.property('exclude.labels.site')
         .that.deep.equals("test.website.org")

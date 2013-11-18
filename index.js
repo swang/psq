@@ -19,6 +19,6 @@ var ParseSearchQuery = function(query) {
       json[(reWord[1] !== '-' ? 'include' : 'exclude')].words.push(reWord[2])
     }
   })
-  return json
+  return JSON.stringify(json)
 }
 module.exports = ParseSearchQuery
