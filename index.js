@@ -16,11 +16,11 @@ var ParseSearchQuery = function(query) {
       json[(regExpLabelMatch[1] !== '-' ? 'include' : 'exclude')].labels[regExpLabelMatch[2]] = regExpLabelMatch[3]
     }
     else if (reWord) {
-      json[(reWord[1] !== '-' ? 'include' : 'exclude')].words.push(reWord[2])
+      json[(reWord[1] !== '-' ? 'include' : 'exclude')].words.push(reWord[2].replace(/\"([^\"]+)\"/,"$1"))
     }
   })
   return JSON.stringify(json)
 }
-module.exports = ParseSearchQuery
 
+module.exports = ParseSearchQuery
 module.exports.VERSION = require('./package').version

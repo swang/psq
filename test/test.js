@@ -18,7 +18,7 @@ describe('psq', function() {
 
       expect(parse)
         .to.have.deep.property('include.words')
-        .that.deep.equals(['"alpha quadrant"'])
+        .that.deep.equals(['alpha quadrant'])
 
       expect(parse)
         .to.have.deep.property('exclude.words')
@@ -28,7 +28,7 @@ describe('psq', function() {
 
       expect(parse2)
         .to.have.deep.property('include.words')
-        .that.deep.equals(['"alpha quadrant"', 'beta', 'gamma', 'info'])
+        .that.deep.equals(['alpha quadrant', 'beta', 'gamma', 'info'])
 
       expect(parse2)
         .to.have.deep.property('exclude.words')
@@ -42,7 +42,7 @@ describe('psq', function() {
 
       expect(parse3)
         .to.have.deep.property('exclude.words')
-        .that.deep.equals(['"alpha quadrant"'])
+        .that.deep.equals(['alpha quadrant'])
 
       done()
     })
