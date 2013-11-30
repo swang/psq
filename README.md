@@ -30,7 +30,7 @@ console.log(psq('"hello world" -python +example'))
     "include": {
         "labels": {},
         "words": [
-            "\"hello world\"",
+            "hello world",
             "example"
         ]
     }
