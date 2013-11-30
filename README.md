@@ -46,6 +46,9 @@ console.log(psq('"hello world" -python +example'))
 - Add flags for HTML escaping/stripping and URL encoding/decoding
 
 ## CHANGELOG
+0.0.3
+- Added support for terms when they contain a dash
+- Words inside quotes will now have quotes stripped in results
 
 0.0.2
 - Fixed return object (now returns JSON)

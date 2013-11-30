@@ -1,6 +1,6 @@
 {
   "name": "psq",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "parses search query string into json",
   "main": "index.js",
   "directories": {
