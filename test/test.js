@@ -63,4 +63,130 @@ describe('psq', function() {
       done()
     })
   })
+  describe('results involving dashes', function() {
+    describe('dashes inbetween a word (include)', function() {
+      it('handles basic term with dash', function(done) {
+        var parse = JSON.parse(psq('air-condition'))
+        expect(parse).to.deep.eql({
+          include: {
+            labels: {},
+            words: ['air-condition']
+          },
+          exclude: {
+            labels: {},
+            words: []
+          }
+        })
+        done()
+      })
+      it('handles a phrase with a word that contains a dash', function(done) {
+        var parse = JSON.parse(psq('"air-condition repair"'))
+        expect(parse).to.deep.eql({
+          include: {
+            labels: {},
+            words: ['air-condition repair']
+          },
+          exclude: {
+            labels: {},
+            words: []
+          }
+        })
+        done()
+      })
+      it('handles a label that contains a dash', function(done) {
+        var parse = JSON.parse(psq('site:air-condition.com repair'))
+        expect(parse).to.deep.eql({
+          include: {
+            labels: {
+              "site": "air-condition.com"
+            },
+            words: ['repair']
+          },
+          exclude: {
+            labels: {},
+            words: []
+          }
+        })
+        done()
+      })
+      it('handles label with dash and then an extra search term (phrase)', function(done) {
+        var parse = JSON.parse(psq('site:air-condition.com "best deals"'))
+        expect(parse).to.deep.eql({
+          include: {
+            labels: {
+              "site": "air-condition.com"
+            },
+            words: ['best deals']
+          },
+          exclude: {
+            labels: {},
+            words: []
+          }
+        })
+        done()
+      })
+    })
+    describe('dashes inbetween a word (exclude)', function() {
+      it('handles basic term with dash', function(done) {
+        var parse = JSON.parse(psq('-air-condition'))
+        expect(parse).to.deep.eql({
+          include: {
+            labels: {},
+            words: []
+          },
+          exclude: {
+            labels: {},
+            words: ['air-condition']
+          }
+        })
+        done()
+      })
+      it('handles a phrase with a word that contains a dash', function(done) {
+        var parse = JSON.parse(psq('-"air-condition repair"'))
+        expect(parse).to.deep.eql({
+          include: {
+            labels: {},
+            words: []
+          },
+          exclude: {
+            labels: {},
+            words: ['air-condition repair']
+          }
+        })
+        done()
+      })
+      it('handles a label that contains a dash', function(done) {
+        var parse = JSON.parse(psq('-site:air-condition.com repair'))
+        expect(parse).to.deep.eql({
+          include: {
+            labels: {},
+            words: ['repair']
+          },
+          exclude: {
+            labels: {
+              "site": "air-condition.com"
+            },
+            words: []
+          }
+        })
+        done()
+      })
+      it('handles label with dash and then an extra search term (phrase)', function(done) {
+        var parse = JSON.parse(psq('-site:air-condition.com -"best deals"'))
+        expect(parse).to.deep.eql({
+          include: {
+            labels: {},
+            words: []
+          },
+          exclude: {
+            labels: {
+              "site": "air-condition.com"
+            },
+            words: ['best deals']
+          }
+        })
+        done()
+      })
+    })
+  })
 })
