@@ -35,7 +35,7 @@ console.log(psq('"hello world" -python +example'))
         ]
     }
 }
-````
+```
 ## Author
 
 - [Shuan Wang](https://github.com/swang) [(twitter)](https://twitter.com/swang) (author)
